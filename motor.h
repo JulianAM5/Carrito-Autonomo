@@ -14,9 +14,9 @@
 #include <stdint.h>
 
 /* Niveles de velocidad (porcentaje) */
-#define VELOCIDAD_BAJA    33
-#define VELOCIDAD_MEDIA   66
-#define VELOCIDAD_ALTA    100
+#define VELOCIDAD_BAJA    50
+#define VELOCIDAD_MEDIA   65
+#define VELOCIDAD_ALTA    80
 
 /* Tiempo (ms) que tarda el robot en girar 90 grados sobre su eje a 100% de
  * velocidad. ES UN VALOR A CALIBRAR segun tu chasis, motores y bateria. */

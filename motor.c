@@ -3,6 +3,7 @@
  */
 
 #include <avr/io.h>
+#include <stdint.h>
 #include <util/delay.h>
 #include "motor.h"
 
@@ -36,9 +37,22 @@ static void delay_ms_var(uint16_t ms)
 
 static void aplicar_pwm(uint8_t porcentaje)
 {
-    uint8_t duty = (uint8_t)(((uint16_t)porcentaje * 255U) / 100U);
+    uint8_t offset1 = 0;
+    uint8_t offset2 = 0;
+
+    if (porcentaje == VELOCIDAD_BAJA) {
+        offset2 = 26;
+    } else if (porcentaje == VELOCIDAD_MEDIA) {
+        offset2 = 30;
+    } else {
+        offset1 = 3;
+        offset2 = 20;
+    }
+
+    uint8_t duty = (uint8_t)(((uint16_t)(porcentaje - offset1)* 255U) / 100U);
+    uint8_t duty2 = (uint8_t)(((uint16_t)(porcentaje + offset2)* 255U) / 100U);
     OCR0A = duty;   /* motor izquierdo */
-    OCR0B = duty;   /* motor derecho   */
+    OCR0B = duty2;   /* motor derecho   */
 }
 
 /* Direccion de cada motor: 1 = adelante, -1 = atras, 0 = freno */
