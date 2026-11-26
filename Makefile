@@ -5,7 +5,7 @@ F_CPU = 16000000UL
 SRC = main.c motor.c ultrasonico.c
 TARGET = main
 PROGRAMMER = arduino
-PORT = /dev/ttyACM0
+PORT = /dev/ttyACM1
 
 CC = avr-gcc
 OBJCOPY = avr-objcopy

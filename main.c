@@ -48,6 +48,8 @@ int main(void)
             /* Hay obstaculo: alto y gira 90 grados */
             detener();
             _delay_ms(200);
+            mover_atras();
+            _delay_ms(300);
             girar_derecha_90();
             _delay_ms(200);
         } else {
